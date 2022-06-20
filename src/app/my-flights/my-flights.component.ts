@@ -15,7 +15,11 @@ export class MyFlightsComponent implements OnInit {
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
-    this.flights = this.flightService.getMyFlights();
+    this.getFlightsData();
+  }
+
+  private getFlightsData() {
+    this.flightService.getFlightsData().subscribe( data => {this.flights = data;} )
   }
 
 }

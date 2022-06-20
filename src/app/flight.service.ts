@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Flight } from './flight';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,10 @@ export class FlightService {
 
   public getMyFlights() : Flight[]{
     return this.myFlights;
+  }
+
+  public getFlightsData() : Observable<Flight[]>{
+    let url = "http://localhost:8080/flights";
+    return this.http.get<Flight[]>(url);
   }
 }
